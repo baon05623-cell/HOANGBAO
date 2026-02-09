@@ -331,6 +331,31 @@ a {
     padding: 0 20px;            
 }
 
+/* Animation Best Seller */
+@keyframes bestSellerPulse {
+  0% {
+    transform: rotate(-8deg) scale(1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  }
+  50% {
+    transform: rotate(-8deg) scale(1.08);
+    box-shadow: 0 6px 14px rgba(255, 87, 34, 0.6);
+  }
+  100% {
+    transform: rotate(-8deg) scale(1);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  }
+}
+
+/* ANIMATION CHO IC0N*/
+@keyframes fireWiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  75% { transform: rotate(10deg); }
+
+}
+
+
 /* =========================================
    TIÊU ĐỀ MENU (MENU GIBOR COFFEE)
 ========================================= */
@@ -378,13 +403,10 @@ a {
     padding: 15px;
     text-align: center;
     box-shadow: 0 6px 15px rgba(0,0,0,0.1); 
-    transition: 0.3s;            
+    transition: 0.3s;    
+    position: relative;        
 }
 
-/* Hiệu ứng khi rê chuột vào card */
-.menu-card:hover {
-    transform: translateY(-6px); 
-}
 
 /* =========================================
    ẢNH SẢN PHẨM
@@ -441,12 +463,21 @@ a {
   z-index: 10;
   box-shadow: 0 4px 8px rgba(0,0,0,0.25);
   transform: rotate(-8deg);
+
+  opacity: 1;
+  visibility: visible;
+
+  animation: bestSellerPulse 2.5s ease-in-out infinite;
 }
 
 
 .badge .icon {
   font-size: 14px;
+  display: inline-block;
+  animation: fireWiggle 1.5s infinite;
 }
+
+
 /* 
 ========================================================================================
 
