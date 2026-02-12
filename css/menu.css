@@ -45,6 +45,10 @@ body.dark {
   --text: #f5f5f5;
   --navbar: rgba(75, 44, 32, 0.95);
   --card: #1e1e1e;
+  .menu-title,
+  .menu-section h3 {
+    color: var(--accent);
+  }
 }
 
 body {
@@ -311,140 +315,357 @@ a {
 }
 
 /* CĂN CHỈNH KÍCH THƯỚC PHÙ HỢP VỚI CẢ MOBILE */
+
+/* ===== NÚT HAMBURGER (ẨN TRÊN DESKTOP) ===== */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: 2px solid var(--accent);
+  border-radius: 8px;
+  width: 42px;
+  height: 42px;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--accent);
+  transition: all 0.3s ease;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 992px) {
+  .header-container {
+    padding: 10px 15px;
+  }
+
+  .logo img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .menu-card img {
+    height: 280px;
+  }
+}
+
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     text-align: center;
   }
-  .nav-links {
+
+  /* HEADER */
+  .logo span {
     display: none;
   }
 
-  .logo span {
+  .logo img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Nav overlay mobile */
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(75, 44, 32, 0.98);
+    backdrop-filter: blur(10px);
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+  }
+
+  .nav.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .nav-links li {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+
+  .nav.active .nav-links li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .nav.active .nav-links li:nth-child(1) {
+    transition-delay: 0.1s;
+  }
+  .nav.active .nav-links li:nth-child(2) {
+    transition-delay: 0.2s;
+  }
+  .nav.active .nav-links li:nth-child(3) {
+    transition-delay: 0.3s;
+  }
+
+  .nav-links a {
+    font-size: 22px;
+    padding: 18px 30px;
+    display: block;
+    letter-spacing: 3px;
+  }
+
+  .menu-toggle.active i::before {
+    content: "\f00d";
+  }
+
+  .menu-toggle {
+    z-index: 9999;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .icon-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .icon-btn span:first-of-type {
     display: none;
+  }
+
+  .icon-btn.cart {
+    font-size: 16px;
+    padding: 6px 8px;
+  }
+
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+
+  /* MENU CONTENT */
+  .menu-container {
+    margin: 25px auto;
+    padding: 0 12px;
+  }
+
+  .menu-title {
+    font-size: 22px;
+    margin-bottom: 25px;
+  }
+
+  .section-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .menu-card {
+    padding: 10px;
+  }
+
+  .menu-card img {
+    height: 200px;
+    border-radius: 8px;
+  }
+
+  .menu-card h4 {
+    font-size: 14px;
+    margin: 8px 0 3px;
+  }
+
+  .menu-card p {
+    font-size: 12px;
+  }
+
+  .price {
+    font-size: 13px;
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+
+  .footer-col {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .menu-card img {
+    height: 250px;
+  }
+
+  .menu-card h4 {
+    font-size: 16px;
+  }
+
+  .menu-card p {
+    font-size: 13px;
+  }
+
+  .menu-title {
+    font-size: 20px;
+  }
+
+  .header-actions {
+    gap: 5px;
+  }
+
+  .logo img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .icon-btn {
+    padding: 5px 8px;
+    font-size: 11px;
+  }
+
+  .menu-toggle {
+    width: 36px;
+    height: 36px;
+    font-size: 17px;
+  }
+
+  .theme-toggle {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
   }
 }
 
 .menu-container {
-    max-width: 1200px;         
-    margin: 50px auto;           
-    padding: 0 20px;            
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
 }
-
-/* Animation Best Seller */
-@keyframes bestSellerPulse {
-  0% {
-    transform: rotate(-8deg) scale(1);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-  }
-  50% {
-    transform: rotate(-8deg) scale(1.08);
-    box-shadow: 0 6px 14px rgba(255, 87, 34, 0.6);
-  }
-  100% {
-    transform: rotate(-8deg) scale(1);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-  }
-}
-
-/* ANIMATION CHO IC0N*/
-@keyframes fireWiggle {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-10deg); }
-  75% { transform: rotate(10deg); }
-
-}
-
 
 /* =========================================
    TIÊU ĐỀ MENU (MENU GIBOR COFFEE)
 ========================================= */
 .menu-title {
-    text-align: center;          
-    font-size: 32px;             
-    color: #5a2d1a;             
-    margin-bottom: 40px;         
-    letter-spacing: 2px;         
+  text-align: center;
+  font-size: 32px;
+  color: #5a2d1a;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
 }
 
 /* =========================================
    MỖI NHÓM MENU (CÀ PHÊ / TRÀ / ...)
 ========================================= */
 .menu-section {
-    margin-bottom: 50px;         /* Tách các nhóm menu ra */
+  margin-bottom: 50px; /* Tách các nhóm menu ra */
 }
 
 /* =========================================
    TIÊU ĐỀ NHÓM (☕ CÀ PHÊ, 🍃 TRÀ...)
 ========================================= */
 .section-title {
-    font-size: 24px;             
-    color: #8b5e3c;              
-    margin-bottom: 20px;
-    border-left: 5px solid #c9a063; 
-    padding-left: 12px;
+  font-size: 24px;
+  color: #8b5e3c;
+  margin-bottom: 20px;
+  border-left: 5px solid #c9a063;
+  padding-left: 12px;
 }
 
 /* =========================================
    GRID CHỨA CÁC MÓN (CARD)
 ========================================= */
 .menu-grid {
-    display: grid;               
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 25px;                   
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 25px;
 }
 
 /* =========================================
    CARD SẢN PHẨM
 ========================================= */
 .menu-card {
-    background: #fff7f0;         
-    border-radius: 12px;        
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1); 
-    transition: 0.3s;    
-    position: relative;        
+  background: #fff7f0;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+  position: relative;
 }
 
+/* Hiệu ứng khi rê chuột vào card */
+.menu-card:hover {
+  transform: translateY(-6px);
+}
 
 /* =========================================
    ẢNH SẢN PHẨM
 ========================================= */
 .menu-card img {
-    width: 100%;                 
-    height: 400px;               
-    object-fit: cover;         
-    border-radius: 10px;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 /* =========================================
    TÊN SẢN PHẨM
 ========================================= */
 .menu-card h4 {
-    margin: 12px 0 5px;
-    color: #5a2d1a;            
-    font-size: 18px;
+  margin: 12px 0 5px;
+  color: #5a2d1a;
+  font-size: 18px;
 }
 
 /* =========================================
    MÔ TẢ NGẮN
 ========================================= */
 .menu-card p {
-    font-size: 14px;
-    color: #777;                 
+  font-size: 14px;
+  color: #777;
 }
 
 /* =========================================
    GIÁ SẢN PHẨM
 ========================================= */
 .price {
-    display: inline-block;
-    margin-top: 8px;
-    font-weight: bold;
-    color: #c27b43;              
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: bold;
+  color: #c27b43;
 }
-
 
 /* Nhãn dán best seller */
 .badge {
@@ -461,7 +682,7 @@ a {
   align-items: center;
   gap: 6px;
   z-index: 10;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
   transform: rotate(-8deg);
 
   opacity: 1;
@@ -470,14 +691,41 @@ a {
   animation: bestSellerPulse 2.5s ease-in-out infinite;
 }
 
-
 .badge .icon {
   font-size: 14px;
   display: inline-block;
   animation: fireWiggle 1.5s infinite;
 }
 
+/* Animation Best Seller */
+@keyframes bestSellerPulse {
+  0% {
+    transform: rotate(-8deg) scale(1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    transform: rotate(-8deg) scale(1.08);
+    box-shadow: 0 6px 14px rgba(255, 87, 34, 0.6);
+  }
+  100% {
+    transform: rotate(-8deg) scale(1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
+}
 
+/* ANIMATION CHO IC0N*/
+@keyframes fireWiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
 /* 
 ========================================================================================
 
